@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+      MONGO_INITDB_DATABASE: db
+      MONGODB_DATABASE: db
+      MONGODB_USER: "admin"
+      MONGODB_PASS: "admin"
+      restart: always
+    ports:
+      - "27017:27017"
+      - "28017:28017"
+    volumes:
+      - /Users/ormenessevinicius/Documents/nextLoginTest/login-test-nosrc/app/mongo/:/data/db
+
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: admin
+      ME_CONFIG_MONGODB_ADMINPASSWORD: admin
+      ME_CONFIG_MONGODB_URL: mongodb://admin:admin@mongo:27017/
+      ME_CONFIG_BASICAUTH: false
