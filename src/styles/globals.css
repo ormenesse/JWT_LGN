@@ -14,14 +14,37 @@
   }
 }
 
-body {
+html, body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+.content {
+  flex: 1 0 auto;
+}
+.footer {
+  flex-shrink: 0;
+}
+
+h1,h2,h3,h4,h5,h6,button{
+	font-family: 'Roboto', sans-serif;
+}
+p{
+	font-style: italic;
+	font-size: 16px;
+}
+.section{
+	padding-top: 7%;
+	padding-bottom: 5%;
+	color:#666666;
 }

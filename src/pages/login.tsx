@@ -1,6 +1,7 @@
 // pages/login.js
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import Layout from '../components/Layout';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -8,7 +9,7 @@ export default function Login() {
   const [error, setError] = useState('');
   const router = useRouter();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: unknown) => {
     e.preventDefault();
     setError('');
 
@@ -32,7 +33,7 @@ export default function Login() {
         setError(data.message);
       }
     } catch (error) {
-      setError('Something went wrong');
+      setError('Something went wrong: ' + error);
     }
   };
 
@@ -42,35 +43,37 @@ export default function Login() {
   };
 
   return (
-    <div>
-      <h1>Login</h1>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Email</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Password</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit">Login</button>
-      </form>
-      {/* Add "Create an Account" button */}
+    <Layout>
       <div>
-      <p>Don't have an account?</p>
-        <button onClick={handleRegister}>Create an Account</button>
+        <h1>Login</h1>
+        {error && <p style={{ color: 'red' }}>{error}</p>}
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label>Email</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div>
+            <label>Password</label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+          <button type="submit">Login</button>
+        </form>
+        {/* Add "Create an Account" button */}
+        <div>
+        <p>Don't have an account?</p>
+          <button onClick={handleRegister}>Create an Account</button>
+        </div>
       </div>
-    </div>
+    </Layout>
   );
 }

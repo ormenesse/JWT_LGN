@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import Layout from '../components/Layout';
 
 export default function Dashboard() {
   const [email, setEmail] = useState(null);
@@ -28,9 +29,13 @@ export default function Dashboard() {
   }, [router]);
 
   return (
-    <div>
-      <h1>Dashboard</h1>
-      {email ? <p>Welcome, {email}</p> : <p>Loading...</p>}
-    </div>
+    <Layout>
+      <div className="h-56 grid grid-cols-3 gap-4 content-around">
+        <h1><b>Dashboard</b></h1>
+      </div>
+      <div>
+        {email ? <p>Welcome, {email}</p> : <p>Loading...</p>}
+      </div>
+    </Layout>
   );
 }
