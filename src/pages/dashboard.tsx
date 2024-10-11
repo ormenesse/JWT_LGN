@@ -6,14 +6,14 @@ export default function Dashboard() {
   const [email, setEmail] = useState(null);
   const router = useRouter();
 
-  useEffect(async () => {
+  useEffect(() => {
     const token = localStorage.getItem('token');
     if (!token) {
       router.push('/login');
       return;
     }
     // verificando usuário
-    const verifiedUser = await fetch('/api/auth/user', {
+    const verifiedUser = fetch('/api/auth/user', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -30,12 +30,16 @@ export default function Dashboard() {
 
   return (
     <Layout>
-      <div className="h-56 grid grid-cols-3 gap-4 content-around">
+      <div class="center text-center content-around h-100 m-1">
         <h1><b>Dashboard</b></h1>
       </div>
-      <div>
+      <div class="bottom">
         {email ? <p>Welcome, {email}</p> : <p>Loading...</p>}
       </div>
+     <div class="h-full">
+        <iframe src="https://www.ormait.com.br" class="h-full w-full"></iframe>
+      </div>
+      
     </Layout>
   );
 }

@@ -23,7 +23,7 @@ const Layout = ({ children }: Readonly<{
     children: React.ReactNode;
   }>) => {
     return (
-        <div className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <div className={`${geistSans.variable} ${geistMono.variable} antialiased min-w-fit lg:min-w-0 lg:max-w-5xl lg:mx-auto`}>
             <nav>
                 <ul>
                     <li>
@@ -34,7 +34,7 @@ const Layout = ({ children }: Readonly<{
                     </li>
                 </ul>
             </nav>
-            <main>{children}</main> 
+            <main class='h-100'>{children}</main> 
             <footer className="footer">Ormait.com.br</footer>
         </div>
     );
